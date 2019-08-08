@@ -17,6 +17,10 @@ flutter doctor
 
 echo "Installed flutter to `pwd`/flutter"
 
+flutter analyze
+
+flutter test
+
 flutter build apk --release
 
 #copy the APK where AppCenter will find it
