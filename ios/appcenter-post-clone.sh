@@ -15,7 +15,7 @@ flutter doctor
 
 echo "Installed flutter to `pwd`/flutter"
 
-flutter analyze
+# flutter analyze
 
 flutter test
 
