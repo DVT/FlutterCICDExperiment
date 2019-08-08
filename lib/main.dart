@@ -1,8 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'package:appcenter_analytics/appcenter_analytics.dart';
+import 'package:appcenter_crashes/appcenter_crashes.dart';
+import 'package:appcenter/appcenter.dart';
+
+final ios = defaultTargetPlatform == TargetPlatform.iOS;
+var appSecret = ios ? "5a8ee33c-d092-4885-a432-7f363d47a589" : "3e8e4b9a-ffba-4aee-a746-cc48db393f91";
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -55,6 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  @override
+  initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  initPlatformState() async {
+    await AppCenter.start(appSecret, [AppCenterAnalytics.id, AppCenterCrashes.id]);
   }
 
   @override
